@@ -1,0 +1,724 @@
+﻿@model Academia.Models.DashBoared
+
+@{
+    ViewBag.Title = "DashBoared";
+    if (TempData["Message"] != null)
+    {
+        <script>alert('@TempData["Message"]');</script>
+    }
+}
+<h2>DashBoared</h2>
+<br />
+
+@if (Session["UserRole"] == null)
+{
+    @*<hgroup>
+                <h1>Error.</h1>
+                <h2>An error occurred while processing your request.</h2>
+            </hgroup>
+        }
+        else if (Session["UserRole"].ToString() == "admin")
+        {*@
+    @*<div id="Users">
+        <h2>Users</h2>
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.User.First().Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User.First().Email)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User.First().Phone)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User.First().Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User.First().Role)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.User.First().Password)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.User)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Role)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Password)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.UserID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.UserID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.UserID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>*@
+    <br />
+    <br />
+    <div id="Courses" style="overflow-x:scroll;">
+        <h2>Courses</h2>
+        <p>
+            @Html.ActionLink("Create New", "Create", "Courses")
+        </p>
+        <table class="table" style="">
+            <tr>
+                <th style="min-width:300px;">
+                    @Html.DisplayNameFor(model => model.Courses.First().Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.First().Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.First().InstructorID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.First().InstructorName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.First().Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.First().DurationWeeks)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.First().StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.First().EndDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.First().Category)
+                </th>
+                <th style="min-width:170px;"></th>
+            </tr>
+
+            @foreach (var item in Model.Courses)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstructorID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstructorName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DurationWeeks)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Courses", new { id = item.CourseID }) |
+                        @Html.ActionLink("Details", "Details", "Courses", new { id = item.CourseID }) |
+                        @Html.ActionLink("Delete", "Delete", "Courses", new { id = item.CourseID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <br />
+    <br />
+    <div id="Enrollments">
+        <h2>Enrollments</h2>
+        <p>
+            @Html.ActionLink("Create New", "Create", "Enrollment")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Enrollment.First().UserID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Enrollment.First().CourseID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Enrollment.First().EnrollmentDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Enrollment.First().Status)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Enrollment)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EnrollmentDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Status)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Enrollment", new { id = item.EnrollmentID }) |
+                        @Html.ActionLink("Details", "Details", "Enrollment", new { id = item.EnrollmentID }) |
+                        @Html.ActionLink("Delete", "Delete", "Enrollment", new { id = item.EnrollmentID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+    <br />
+    <br />
+    @*<div id="Lessons">
+        <h2>Lessons</h2>
+        <p>
+            @Html.ActionLink("Create New", "Create", "Lesson")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lesson.First().CourseID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lesson.First().Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lesson.First().Content)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lesson.First().VideoURL)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Lesson.First().OrderIndex)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Lesson)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Content)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.VideoURL)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.OrderIndex)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Lesson", new { id = item.LessonID }) |
+                        @Html.ActionLink("Details", "Details", "Lesson", new { id = item.LessonID }) |
+                        @Html.ActionLink("Delete", "Delete", "Lesson", new { id = item.LessonID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>*@
+    <br />
+    <br />
+    @*<div id="Assessments">
+        <h2>Assessments</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create", "Assessment")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Assessment.First().CourseID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Assessment.First().Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Assessment.First().Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Assessment.First().MaxPoints)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Assessment)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaxPoints)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Assessment", new { id = item.AssessmentID }) |
+                        @Html.ActionLink("Details", "Details", "Assessment", new { id = item.AssessmentID }) |
+                        @Html.ActionLink("Delete", "Delete", "Assessment", new { id = item.AssessmentID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <br />
+        <br />
+
+        <h2>Questions</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create", "Question")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Question.First().AssessmentID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Question.First().QuestionText)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Question.First().QuestionType)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Question.First().Points)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Question)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AssessmentID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuestionText)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuestionType)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Points)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Question", new { id = item.QuestionID }) |
+                        @Html.ActionLink("Details", "Details", "Question", new { id = item.QuestionID }) |
+                        @Html.ActionLink("Delete", "Delete", "Question", new { id = item.QuestionID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+        <br />
+        <br />
+        <h2>Answers</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create", "Answer")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Answer.First().QuestionID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Answer.First().AnswerText)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Answer.First().IsCorrect)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Answer)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.QuestionID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AnswerText)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IsCorrect)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Answer", new { id = item.AnswerID }) |
+                        @Html.ActionLink("Details", "Details", "Answer", new { id = item.AnswerID }) |
+                        @Html.ActionLink("Delete", "Delete", "Answer", new { id = item.AnswerID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>*@
+    <br />
+    <br />
+    @*<div id="Assignments">
+        <h2>Assignments</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create", "Assignment")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Assignment.First().CourseID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Assignment.First().Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Assignment.First().Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Assignment.First().DueDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Assignment.First().MaxPoints)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Assignment)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DueDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaxPoints)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Assignment", new { id = item.AssignmentID }) |
+                        @Html.ActionLink("Details", "Details", "Assignment", new { id = item.AssignmentID }) |
+                        @Html.ActionLink("Delete", "Delete", "Assignment", new { id = item.AssignmentID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>*@
+    <br />
+    <br />
+    @*<div id="Submissions">
+        <h2>Submissions</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create", "Submission")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Submission.First().AssignmentID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Submission.First().UserID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Submission.First().SubmissionDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Submission.First().Content)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Submission.First().Grade)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Submission)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AssignmentID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SubmissionDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Content)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Grade)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Submission", new { id = item.SubmissionID }) |
+                        @Html.ActionLink("Details", "Details", "Submission", new { id = item.SubmissionID }) |
+                        @Html.ActionLink("Delete", "Delete", "Submission", new { id = item.SubmissionID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>*@
+    <br />
+    <br />
+    @*<div id="Payments">
+        <h2>Payments</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create", "Payment")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Payment.First().UserID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Payment.First().CourseID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Payment.First().PaymentDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Payment.First().Amount)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Payment.First().PaymentMethod)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Payment.First().PaymentStatus)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Payment)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Amount)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentMethod)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentStatus)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Payment", new { id = item.PaymentID }) |
+                        @Html.ActionLink("Details", "Details", "Payment", new { id = item.PaymentID }) |
+                        @Html.ActionLink("Delete", "Delete", "Payment", new { id = item.PaymentID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>*@
+    <br />
+    <br />
+    @*<div id="Feedbacks">
+        <h2>Feedbacks</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create", "Feedback")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Feedback.First().CourseID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Feedback.First().UserID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Feedback.First().Rating)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Feedback.First().Comment)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Feedback.First().FeedbackDate)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model.Feedback)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CourseID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UserID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Rating)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Comment)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FeedbackDate)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Feedback", new { id = item.FeedbackID }) |
+                        @Html.ActionLink("Details", "Details", "Feedback", new { id = item.FeedbackID }) |
+                        @Html.ActionLink("Delete", "Delete", "Feedback", new { id = item.FeedbackID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>*@
+}
+else if (Session["UserRole"].ToString() == "manager")
+{
+
+}
+else if (Session["UserRole"].ToString() == "staff")
+{
+
+}
+else
+{
+    <div id="Courses" style="overflow-x:scroll;">
+        <h2>Courses</h2>
+        <p>
+            @Html.ActionLink("Create New", "Create", "Courses")
+        </p>
+        <table class="table" style="">
+            <tr>
+                <th style="min-width:300px;">
+                    @Html.DisplayNameFor(model => model.Courses.First().Title)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.First().Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.First().InstructorID)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.First().InstructorName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.First().Price)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.First().DurationWeeks)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.First().StartDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.First().EndDate)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Courses.First().Category)
+                </th>
+                <th style="min-width:170px;"></th>
+            </tr>
+
+            @foreach (var item in Model.Courses)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Title)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstructorID)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.InstructorName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Price)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DurationWeeks)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StartDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EndDate)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", "Courses", new { id = item.CourseID }) |
+                        @Html.ActionLink("Details", "Details", "Courses", new { id = item.CourseID }) |
+                        @Html.ActionLink("Delete", "Delete", "Courses", new { id = item.CourseID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+}

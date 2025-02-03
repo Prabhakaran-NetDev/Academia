@@ -1,0 +1,50 @@
+﻿@model Academia.Models.Question
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Question</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AssessmentID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AssessmentID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuestionText)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuestionText)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QuestionType)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QuestionType)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Points)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Points)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.QuestionID }) |
+    @Html.ActionLink("Back to List", "../Users/Index")
+</p>
